@@ -21,3 +21,11 @@ class LEDControl:
             print(f"LED turned {state.upper()}")
         except Exception as e:
             print(f"Error controlling LED: {e}")
+
+    def is_on(self) -> bool:
+        """
+        Check if the LED is currently on.
+        :return: True if LED is on, False otherwise
+        """
+        with open(LED_PATH, "r") as led_file:
+            return led_file.read().strip() == "1"
