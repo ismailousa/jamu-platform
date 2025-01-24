@@ -1,0 +1,82 @@
+@startuml
+skinparam rectangle {
+    BorderColor Black
+    BackgroundColor White
+    ArrowColor Black
+}
+
+skinparam note {
+    BackgroundColor #FFFAF0
+    BorderColor #D4AF37
+}
+
+rectangle "Device Layer" as DeviceLayer #E6F3FF {
+    rectangle "Camera Sensor" as A #E6F3FF
+    rectangle "Illumination LEDs" as B #E6F3FF
+    rectangle "Optical Focusing System" as C #E6F3FF
+    rectangle "Others e.g. IR" as D #E6F3FF
+    rectangle "<b>Microcontroller Unit</b>" as E #E6F3FF
+    rectangle "Power Management" as F #E6F3FF
+}
+
+rectangle "Edge Layer\n(Companion Application)" as EdgeLayer #E6FFE6 {
+    rectangle "<b>User Interface</b>" as G #E6FFE6
+    rectangle "Device Pairing" as H #E6FFE6
+    rectangle "<b>Wireless Communication</b>" as I #E6FFE6
+    rectangle "Remote Capture" as J #E6FFE6
+    rectangle "Image Preprocessing" as K #E6FFE6
+    rectangle "Local AI Analysis" as L #E6FFE6
+}
+
+rectangle "Cloud Layer" as CloudLayer #F0E6FF {
+    rectangle "Device Management" #F0E6FF {
+        rectangle "Device Onboarding" as M #F0E6FF
+        rectangle "<b>Remote Updates</b>" as N #F0E6FF
+    }
+    rectangle "Data Repository" #F0E6FF {
+        rectangle "Secure Storage" as O #F0E6FF
+    }
+    rectangle "Advanced Capabilities" #F0E6FF {
+        rectangle "<b>API Orchestration</b>" as P #F0E6FF
+        rectangle "Intelligent Services" as Q #F0E6FF
+    }
+    rectangle "Operational Intelligence" #F0E6FF {
+        rectangle "Performance Tracking" as R #F0E6FF
+    }
+}
+
+rectangle "Security Framework" as SecurityLayer #FFE6CC {
+    rectangle "<b>Identity Verification</b>" as S #FFE6CC
+    rectangle "<b>Access Control</b>" as T #FFE6CC
+    rectangle "Data Protection Protocols" as U #FFE6CC
+}
+
+E -[bold]-> I : Wireless Connectivity
+I -[dotted]-> M : Optional Registration
+I -[dotted]-> N : Update Mechanism
+I -[dotted]-> O : Data Backup
+I -[dotted]-> P : Extended Capabilities
+
+N -[bold]-> I : Configuration Updates
+Q -[bold]-> I : Advanced Insights
+
+S .[#gray]..> EdgeLayer
+S .[#gray]..> CloudLayer
+T .[#gray]..> EdgeLayer
+T .[#gray]..> CloudLayer
+U .[#gray]..> EdgeLayer
+U .[#gray]..> CloudLayer
+
+note bottom of EdgeLayer
+  Technologies: TensorFlow Lite, Cross-Platform Framework
+end note
+
+note bottom of CloudLayer
+  Technologies: Cloud-Native Services, Scalable Infrastructure
+end note
+
+note bottom of SecurityLayer
+  Technologies: Multi-Factor Authentication, Encryption Standards
+end note
+
+@enduml

@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "firmware"
+version = "0.1.0"
+description = "Firmware for a smart camera accessory"
+authors = ["Isma-Ilou Sadou <ismailou.sa@gmail.com>"]
+license = "All Rights Reserved"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+paho-mqtt = "^2.0.0"
+websockets = "^12.0"
+RPi.GPIO = "^0.7.1"  # Only include if running on a Raspberry Pi
+opencv-python = "^4.9.0"  # Optional, for USB camera support
+numpy = "^1.26.0"  # Optional, for image processing
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
