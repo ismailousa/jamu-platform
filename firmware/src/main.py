@@ -10,7 +10,7 @@ import threading
 class SmartCamera:
     def __init__(self):
         self.camera = CameraServer()
-        self.motor = MotorControl(pin=18)
+        # self.motor = MotorControl(pin=18)
         self.led = LEDControl()
 
         # Start a thread to check for camera changes
@@ -77,13 +77,13 @@ class SmartCamera:
             self.led.toggle("OFF")
             return {"status": "success", "message": "LED turned off"}
 
-        elif command.startswith("/motor set"):
-            try:
-                angle = int(command.split()[2])
-                self.motor.set_angle(angle)
-                return {"status": "success", "message": f"Motor set to {angle} degrees"}
-            except (IndexError, ValueError):
-                return {"status": "error", "message": "Invalid motor angle"}
+        # elif command.startswith("/motor set"):
+        #     try:
+        #         angle = int(command.split()[2])
+        #         self.motor.set_angle(angle)
+        #         return {"status": "success", "message": f"Motor set to {angle} degrees"}
+        #     except (IndexError, ValueError):
+        #         return {"status": "error", "message": "Invalid motor angle"}
 
         elif command == "/status":
             return {
@@ -91,7 +91,7 @@ class SmartCamera:
                 "streaming": self.camera.streaming,
                 "recording": self.camera.recording,
                 "led": "on" if self.led.is_on() else "off",
-                "motor_angle": self.motor.get_angle(),
+                "motor_angle": 'NOTSET', #self.motor.get_angle(),
                 "camera_type": self.camera.camera_type,
             }
 
