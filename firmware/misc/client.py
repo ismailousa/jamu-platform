@@ -2,9 +2,10 @@ import asyncio
 import websockets
 import json
 
-uri = "ws://192.168.178.65:8765"  # Replace with your server's IP if running remotely
+uri = "ws://192.168.178.65:8765" 
+
 async def interactive_websocket_client():
-    # uri = uri
+    # uri = "ws://localhost:8765" 
     async with websockets.connect(uri) as websocket:
         print("Connected to WebSocket server. Type commands to interact with the server.")
         print("Type 'exit' to quit.")
@@ -34,4 +35,5 @@ async def interactive_websocket_client():
                 print("Response is not in JSON format.")
 
 # Run the interactive client
-asyncio.get_event_loop().run_until_complete(interactive_websocket_client())
+if __name__ == "__main__":
+    asyncio.run(interactive_websocket_client())

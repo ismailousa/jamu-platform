@@ -13,6 +13,7 @@ class CameraServer:
         self.stream_thread: Optional[threading.Thread] = None
         self.client_socket = None
         self.camera_type = self.detect_camera_type()  # Detect camera type on initialization
+        print(f"Camera type detected: {self.camera_type}") 
 
     def detect_camera_type(self):
         """

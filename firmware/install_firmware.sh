@@ -14,7 +14,7 @@ echo "Updating system packages..."
 sudo apt update
 
 echo "Installing system dependencies..."
-sudo apt install -y python3-pip libcamera-apps ffmpeg  # Added ffmpeg for USB camera support
+sudo apt install -y python3-pip libcamera-apps ffmpeg v4l-utils  # Added ffmpeg for USB camera support
 
 # Optionally create a Python virtual environment
 read -p "Do you want to create a Python virtual environment? (y/n): " create_venv

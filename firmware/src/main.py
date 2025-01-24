@@ -18,7 +18,7 @@ class SmartCamera:
         self.camera_thread.daemon = True
         self.camera_thread.start()
 
-    async def handle_client(self, websocket, path):
+    async def handle_client(self, websocket):
         """
         Handle WebSocket client connections.
         """
@@ -120,7 +120,7 @@ async def start_websocket_server():
 
     # Create a wrapper function to bind the instance
     async def handler(websocket, path):
-        await camera.handle_client(websocket, path)
+        await camera.handle_client(websocket)
 
     # Start the WebSocket server with the wrapper function
     async with websockets.serve(handler, "0.0.0.0", 8765):
