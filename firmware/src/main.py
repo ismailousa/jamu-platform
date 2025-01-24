@@ -112,14 +112,21 @@ class SmartCamera:
         else:
             return {"status": "error", "message": "Invalid command"}
 
-async def start_websocket_server():
+def start_websocket_server():
     """
     Start the WebSocket server.
     """
     camera = SmartCamera()
-    async with websockets.serve(camera.handle_client, "0.0.0.0", 8765):
-        print("WebSocket server started on ws://0.0.0.0:8765")
-        await asyncio.Future()  # Run forever
+
+    # Create a wrapper function to bind the instance
+    async def handler(websocket, path):
+        await camera.handle_client(websocket, path)
+
+    # Start the WebSocket server with the wrapper function
+    start_server = websockets.serve(handler, "0.0.0.0", 8765)
+    asyncio.get_event_loop().run_until_complete(start_server)
+    print("WebSocket server started on ws://0.0.0.0:8765")
+    asyncio.get_event_loop().run_forever()
 
 if __name__ == "__main__":
     asyncio.run(start_websocket_server())
