@@ -18,17 +18,21 @@ class SmartCamera:
         self.camera_thread.daemon = True
         self.camera_thread.start()
 
-    async def handle_client(self, websocket):
+    async def handle_client(self, websocket, path):
         """
         Handle WebSocket client connections.
         """
+        print(f"New client connected: {websocket.remote_address}")  # Debug message
         async for message in websocket:
             try:
+                print(f"Received command: {message}")  # Debug message
                 command = message.strip().lower()
                 response = await self.process_command(command, websocket)
                 await websocket.send(json.dumps(response))
             except Exception as e:
+                print(f"Error processing command: {e}")  # Debug message
                 await websocket.send(json.dumps({"status": "error", "message": str(e)}))
+
 
     async def process_command(self, command, websocket):
         """
@@ -120,12 +124,12 @@ async def start_websocket_server():
 
     # Create a wrapper function to bind the instance
     async def handler(websocket, path):
-        await camera.handle_client(websocket)
+        await camera.handle_client(websocket, path)
 
     # Start the WebSocket server with the wrapper function
     async with websockets.serve(handler, "0.0.0.0", 8765):
         print("WebSocket server started on ws://0.0.0.0:8765")
-        await asyncio.Future()  # Run forever
+        await asyncio.Future()  
 
 if __name__ == "__main__":
     asyncio.run(start_websocket_server())
