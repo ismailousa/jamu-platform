@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "data-pipeline"
+version = "0.1.0"
+description = "Data preprocessing pipeline"
+authors = ["Isma-Ilou Sadou <ismailou.sa@gmail.com>"]
+readme = "README.md"
+packages = [{include = "*", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+boto3 = "^1.35.89"
+kaggle = "^1.6.17"
+pandas = "^2.2.3"
+python-box = "^7.3.0"
+pyyaml = "^6.0.2"
+jupyter = "^1.1.1"
+ipykernel = "^6.29.5"
+scipy = "^1.14.1"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
