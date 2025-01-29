@@ -4,14 +4,14 @@ from data_pipeline.constants import CONFIG_FILE_PATH
 from data_pipeline.ingestion.fetch_kaggle import download_datasets
 from data_pipeline.ingestion.load_metadata import load_metadatas
 
-def run_ingestion_pipeline(datasets):
+def run_ingestion_pipeline(datasets, download=False, upload=False):
     """
     Run the ingestion pipeline.
 
     """
     # Download the datasets
     logger.info("Starting data ingestion...")
-    # datasets = download_datasets(datasets) # TOFIX:
+    datasets = download_datasets(datasets) # TOFIX:
     datasets = [datasets[0]]
 
     # Upload the datasets to S3 optionally
