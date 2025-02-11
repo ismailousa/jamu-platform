@@ -5,12 +5,20 @@ description = ""
 authors = ["Isma-Ilou Sadou <ismailou.sa@gmail.com>"]
 license = "All Rights Reserved."
 readme = "README.md"
+packages = [{include = "*", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
 numpy = "^2.2.2"
 pandas = "^2.2.3"
 opencv-python = "^4.11.0.86"
+tdqm = "^0.0.1"
+matplotlib = "^3.10.0"
+scikit-learn = "^1.6.1"
+jupyter = "^1.1.1"
+torch = "^2.6.0"
+torchvision = "^0.21.0"
+torchaudio = "^2.6.0"
 
 
 [tool.poetry.group.dev.dependencies]

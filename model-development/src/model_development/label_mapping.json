@@ -1,0 +1,16 @@
+{
+    "gender": {
+        "male": 0,
+        "female": 1
+    },
+    "condition": {
+        "Normal": 0,
+        "Diabetes": 1,
+        "Glaucoma": 2,
+        "Cataract": 3,
+        "Age-related Macular Degeneration": 4,
+        "Hypertension": 5,
+        "Myopia": 6,
+        "Other": 7
+    }
+}

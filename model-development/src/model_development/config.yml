@@ -1,0 +1,35 @@
+common:
+  s3_data_bucket: "data-pipeline-bucket"
+
+datasets:
+  - name: "ODIR5K"
+    source: "kaggle"
+    kaggle_dataset: "andrewmvd/ocular-disease-recognition-odir5k"
+    metadata_file: "full_df.csv"
+    image_folder: "preprocessed_images"
+    upload_to_s3: false
+
+preprocessing:
+  image_size: [224, 224]                        
+  normalize: true                               
+
+augmentation:
+  target_counts:
+    N: 1608    
+    D: 1608
+    O: 1608    
+    G: 1608
+    C: 1608
+    A: 1608
+    H: 1608
+    M: 1608
+  params:
+    rotation_range: 20
+    width_shift_range: 0.2
+    height_shift_range: 0.2
+    shear_range: 0.2                            
+    zoom_range: 0.2                            
+    horizontal_flip: true
+    brightness_range: [0.8, 1.2]
+    fill_mode: 'nearest'
+    num_augments_per_image: 5
