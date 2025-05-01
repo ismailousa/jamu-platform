@@ -18,4 +18,4 @@ logging.basicConfig(
     ],
 )
 
-logger = logging.getLogger("ocular_detection_data_logger")
+logger = logging.getLogger("data_pipeline_data_logger")

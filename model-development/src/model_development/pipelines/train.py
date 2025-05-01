@@ -50,6 +50,10 @@ def run_training_pipeline(args, upload=False):
 
     device = torch.device('mps' if torch.mps.is_available() else 'cpu')
 
+    model = load_resnet18_torch(args.num_classes, weights="pretrained", mode="finetune", device=device)
+
+    criterion, optimizer, scheduler = get_hyperparameters()
+
     writer = SummaryWriter(log_dir=args.log_dir)
 
     # Add training code here
